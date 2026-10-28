@@ -1,3 +1,9 @@
+      - name: Diagnostico ndk-build
+        continue-on-error: true
+        working-directory: SDL/build/com.taifx.baba/app
+        run: |
+          $ANDROID_NDK_HOME/ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=jni/Android.mk NDK_APPLICATION_MK=jni/Application.mk -j2 2>&1 | tail -40
+          cat build.gradle | head -30
 name: Compilar APK
 
 on:
